@@ -18,8 +18,28 @@
 <body>
 	<div class="container">
 		<h1>Create a Ninja!</h1>
-		<p>Soon, a shiny create Ninja form will go here!</p>
-		<p><a href="/">Home</a></p>
+		<div class="container">
+			<form:form action="/dojo/create" method="POST" modelAttribute="ninja">
+				<!-- Code needs to go here to iterate through all the dojos and input them into a selector -->
+				<div>
+					<form:label path="firstName"></form:label>
+					<form:input path="firstName"/>
+					<form:errors path="firstName"/>
+				</div>
+				<div>
+					<form:label path="lastName"></form:label>
+					<form:input path="lastName"/>
+					<form:errors path="lastName"/>
+				</div>
+				<div>
+					<form:label path="age"></form:label>
+					<form:input path="age"/>
+					<form:errors path="age"/>
+				</div>
+				<button class="btn btn-primary">Create Ninja</button>
+			</form:form>
+		</div>
+		<p class="btn btn-primary"><a class="text-light text-decoration-none" href="/">Home</a></p>
 	</div>
 </body>
 </html>
