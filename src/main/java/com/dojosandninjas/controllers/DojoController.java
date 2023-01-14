@@ -49,7 +49,6 @@ public class DojoController {
 	@GetMapping("/dojo/{id}/view")
 	public String findOne(@PathVariable("id") Long id, Model model) {
 		System.out.println("Dojo " + id + " selected.");
-		model.addAttribute("allNinjas",ninjaServ.getAll());
 		model.addAttribute("dojo", dojoServ.getOne(id));
 		return "oneDojo.jsp";
 	}

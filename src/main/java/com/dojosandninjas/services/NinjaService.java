@@ -34,5 +34,9 @@ public class NinjaService {
 	public void delete(Long id) {
 		ninjaRepo.deleteById(id);
 	}
+	
+	public void deleteAll(List<Ninja> ninjas) {
+		ninjaRepo.deleteAll(ninjas);
+	}
 
 }
