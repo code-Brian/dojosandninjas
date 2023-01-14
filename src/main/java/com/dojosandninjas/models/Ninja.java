@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -29,13 +32,15 @@ public class Ninja {
 	@NotEmpty(message="Cannot be blank!")
 	private String lastName;
 	@Min(18)
-	@NotEmpty(message="Cannot be blank!")
 	private Integer age;
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="dojo_id")
+	private Dojo dojo;
 	
 	public Ninja() {}
 
@@ -94,6 +99,14 @@ public class Ninja {
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
+	}
+
+	public Dojo getDojo() {
+		return dojo;
+	}
+
+	public void setDojo(Dojo dojo) {
+		this.dojo = dojo;
 	}
 	
 	// there's gonna be a Dojo attribute ported in, somehow.

@@ -19,21 +19,31 @@
 	<div class="container">
 		<h1>Create a Ninja!</h1>
 		<div class="container">
-			<form:form action="/dojo/create" method="POST" modelAttribute="ninja">
+			<form:form action="/ninja/create" method="POST" modelAttribute="ninja">
 				<!-- Code needs to go here to iterate through all the dojos and input them into a selector -->
 				<div>
-					<form:label path="firstName"></form:label>
+					<form:label path="dojo">Dojo</form:label>
+					<form:select path="dojo">
+						<c:forEach var="oneDojo" items="${allDojos}">
+							<form:option value="${oneDojo.id}">
+								<c:out value="${oneDojo.name}"/>
+							</form:option>
+						</c:forEach>
+					</form:select>
+				</div>
+				<div>
+					<form:label path="firstName">First name</form:label>
 					<form:input path="firstName"/>
 					<form:errors path="firstName"/>
 				</div>
 				<div>
-					<form:label path="lastName"></form:label>
+					<form:label path="lastName">Last Name</form:label>
 					<form:input path="lastName"/>
 					<form:errors path="lastName"/>
 				</div>
 				<div>
-					<form:label path="age"></form:label>
-					<form:input path="age"/>
+					<form:label path="age">Age</form:label>
+					<form:input path="age" type="number" min="18"/>
 					<form:errors path="age"/>
 				</div>
 				<button class="btn btn-primary">Create Ninja</button>

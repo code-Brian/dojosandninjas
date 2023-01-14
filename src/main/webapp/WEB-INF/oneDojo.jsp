@@ -16,9 +16,28 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Dojo (dojo name will be placed here via model soon!)</h1>
-		<p>A fancy table will go here, soon!</p>
-		<p><a href="/">Home</a></p>
+		<h1>${dojo.name}</h1>
+		<!-- For each meme here after ninjas table is added to Dojo -->
+		<h2>Ninjas in the dojo:</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Age</td>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="oneNinja" items="${allNinjas}">
+					<tr>
+						<td>${oneNinja.firstName}</td>
+						<td>${oneNinja.lastName}</td>
+						<td>${oneNinja.age}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<p class="btn btn-primary"><a class="text-decoration-none text-light"href="/">Home</a></p>
 	</div>
 </body>
 </html>
